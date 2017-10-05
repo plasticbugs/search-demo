@@ -53,7 +53,7 @@ class App extends React.Component {
           }
         </ul>);
     }
-    return (<div>
+    return (<div id="container">
       < Search handleSearch={ this.handleSearch } />
       { results }
     </div>);
