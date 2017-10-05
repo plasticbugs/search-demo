@@ -1,3 +1,47 @@
 body {
   background-color: #fdfdfd;
+  font-family: 'Helvetica';
+}
+ul {
+  -webkit-padding-start: 0px;
+}
+li {
+  list-style-type: none;
+}
+.search-field {
+  font-size: 12px;
+  padding: 4px 0 4px 6px;
+  width: 190px;
+  display: block;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  border: 1px solid #ff75a8;
+  border-radius: 6px;
+}
+.search-field:focus, input:focus {
+  outline: none;  
+}
+.submit-button {
+  margin-top: 6px;
+}
+.content {
+  padding: 8px;
+}
+.tweet-text {
+  white-space: pre-wrap;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15px;
+}
+.user-id {
+  font-weight: 500;
+}
+.post-date {
+  font-weight: 200;
+}
+.tweet-info {
+  font-size: 14px;
 }
