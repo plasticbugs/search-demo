@@ -33,6 +33,6 @@ myInterface.on('line', (line) => {
 myInterface.on('close', ()=> {
   console.log(tweetJSON.tweets.length);
   // writeout the JSON to a seed file
-  let json = JSON.stringify(tweetJSON);
+  let json = JSON.stringify(tweetJSON) + '\n';
   fs.writeFileSync(path.resolve('./seeds/tweets.json'), json);
 })
