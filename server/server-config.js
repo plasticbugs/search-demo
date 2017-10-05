@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
 app.get('/api/search', (req, res) => {
   let data = {created_at: new Date(), text: "hello this is a tweet.", user_id: "plasticbugs"};
   search(data, (err, tweet) => {
+    tweet.push(tweet.length)
     res.send(tweet);
   })
 })
