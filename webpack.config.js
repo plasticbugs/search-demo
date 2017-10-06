@@ -1,7 +1,7 @@
 module.exports = {
-  entry: "./src/components/App.jsx",
+  entry: './src/components/App.jsx',
   output: {
-    filename: "public/scripts/bundle.js"
+    filename: 'public/scripts/bundle.js'
   },
   module: {
     rules: [
@@ -17,7 +17,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader" 
+        loader: 'style-loader!css-loader'
       }
     ]
   }
