@@ -6,10 +6,6 @@ const tweetController = require('./controllers/tweets');
 
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-  res.sendFile(path.resolve('../public/index.html'));
-});
-
 app.get('/api/search', tweetController.search);
 
 module.exports = app;
