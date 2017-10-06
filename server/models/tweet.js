@@ -14,8 +14,8 @@ module.exports = Tweet;
 
 module.exports.search = (query, callback) => {
   console.log(query);
-  Tweet.find( { $text: { $search: query, $diacriticSensitive: false } }, {score : { $meta: "textScore" } } )
-  .sort( { score: { $meta: "textScore" } } )
+  Tweet.find( { $text: { $search: query, $diacriticSensitive: false } }, {score : { $meta: 'textScore' } } )
+  .sort( { score: { $meta: 'textScore' } } )
   .lean()
   .exec( ( err, result ) => {
     if(err) {
@@ -23,7 +23,7 @@ module.exports.search = (query, callback) => {
     } else {
       console.log(result.length);
       let formattedResult = result.map( tweet => {
-        tweet.formatted_date = moment(tweet.created_at, "YYYYMMDD").fromNow();
+        tweet.formatted_date = moment(tweet.created_at, 'YYYYMMDD').fromNow();
         delete tweet.searchableText;
         return tweet;
       });
