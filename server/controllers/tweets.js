@@ -2,7 +2,10 @@ const Tweet = require('../models/tweet');
 const moment = require('moment');
 
 module.exports.search = (req, res) => {
-  Tweet.find( { $text: { $search: req.query.q } } ).lean().exec( ( err, result ) => {
+  Tweet.find( { $text: { $search: req.query.q } }, {score : { $meta: "textScore" } } )
+    .sort( { score: { $meta: "textScore" } } )
+    .lean()
+    .exec( ( err, result ) => {
     if(err) {
       console.log("There was a database error: ", err);
       res.status(500).send({ error: 'Something went wrong.' });
