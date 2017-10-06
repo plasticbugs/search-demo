@@ -32,10 +32,10 @@ module.exports = function(done) {
   });
   
   myInterface.on('close', ()=> {
-    console.log(tweetJSON.tweets.length);
-    // writeout the JSON to a seed file
+    // write out the JSON to a seed file
     let json = JSON.stringify(tweetJSON) + '\n';
     fs.writeFileSync(path.resolve('./db/seeds/tweets.json'), json);
+    console.log("Wrote ", tweetJSON.tweets.length, " entries to file.");
     done();
   })
 }
