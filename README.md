@@ -28,3 +28,9 @@ Open <http://localhost:3000> in your browser to use the application.
 To roll back the migration, run:
 
 `node ./node_modules/mongodb-migrate -runmm -dbc '{ "host":"localhost","db":"twitter","port":27017}' down`
+
+## Running Tests
+
+To run the Mocha unit tests, run:
+
+`yarn test`
