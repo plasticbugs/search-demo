@@ -5,7 +5,7 @@ exports.up = function(db, next){
   var tweets = db.collection('tweets');
   console.log(tweetData.tweets.length);
   tweets.insert(tweetData.tweets);
-  tweets.createIndex( { text: 'text' } );
+  tweets.createIndex( { searchableText: 'text' } );
   next();
 };
 
