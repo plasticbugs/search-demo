@@ -16,7 +16,6 @@ class Tweet extends React.Component {
     }
   }
   handleSearchClick(query) {
-    console.log(query);
     this.props.handleSearch(query);
   }
 

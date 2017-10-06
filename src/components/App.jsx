@@ -29,7 +29,6 @@ class App extends React.Component {
       console.log('Error retrieving search results.')
     })
     .then( result => {
-      console.log(result.data)
       this.setState( { searchResults: result.data, loading: false, recentSearch: query } );
     })
   }
@@ -50,7 +49,6 @@ class App extends React.Component {
         <div className="tweet-list">
           <ul>
             { this.state.searchResults.map( tweet => {
-              console.log(tweet);
               return (
                 < Tweet
                   user_id={ tweet.user_id }
