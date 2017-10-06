@@ -1,8 +1,10 @@
 const Tweet = require('../models/tweet');
 const moment = require('moment');
+const removeAccents = require('remove-accents');
 
 module.exports.search = (req, res) => {
-  Tweet.find( { $text: { $search: req.query.q, $diacriticSensitive: false } }, {score : { $meta: "textScore" } } )
+  let sanitizedSearch = removeAccents(req.query.q);
+  Tweet.find( { $text: { $search: sanitizedSearch, $diacriticSensitive: false } }, {score : { $meta: "textScore" } } )
     .sort( { score: { $meta: "textScore" } } )
     .lean()
     .exec( ( err, result ) => {
