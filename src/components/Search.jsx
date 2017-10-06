@@ -31,8 +31,12 @@ class Search extends React.Component {
   render() {
     let recentSearch;
     if(this.props.recentSearch.length > 0) {
+      let resultText = "results";
+      if(this.props.resultTotal === 1) {
+        resultText = "result";
+      }
       recentSearch = <div className="last-search">
-        Showing results for: { this.props.recentSearch }
+        Showing { this.props.resultTotal } { resultText } for: { this.props.recentSearch }
       </div>;
     }
     return (
