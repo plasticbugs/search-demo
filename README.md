@@ -3,6 +3,7 @@
 ## Setup:
 
 Copy the full raw text file as `assignment_tweet.txt` into the db/ folder.
+Rename `example.env` to `env` and change the settings if necessary. Port is 3000, the db is named 'twitter' by default.
 
 Start your MongoDB server: `mongod`
 
