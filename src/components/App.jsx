@@ -38,7 +38,13 @@ class App extends React.Component {
     let results;
     if(this.state.loading) {
       results = <div className="lds-css ng-scope">
-<div className="lds-spin"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>;
+        <div className="lds-spin">
+        <div><div></div></div><div><div>
+        </div></div><div><div></div></div>
+        <div><div></div></div><div><div>
+        </div></div><div><div></div></div>
+        <div><div></div></div><div><div>
+        </div></div></div></div>;
     } else {
       results = (
         <div className="tweet-list">
@@ -59,7 +65,11 @@ class App extends React.Component {
         </div>);
     }
     return (<div id="container">
-      < Search handleSearch={ this.handleSearch } recentSearch={this.state.recentSearch} />
+      < Search 
+        handleSearch={ this.handleSearch }
+        recentSearch={ this.state.recentSearch }
+        resultTotal={ this.state.searchResults.length }
+      />
       { results }
     </div>);
   }
