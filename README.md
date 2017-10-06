@@ -1,3 +1,6 @@
+To run this application:
+
+1. Replace `example.raw.txt` with the full raw text file
 
 To start the server:
 
