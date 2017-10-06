@@ -1,40 +1,75 @@
+h1, h2, h3, h4, h5, h6,
+ol, ul, li{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
 body {
-  background-color: #fdfdfd;
+  background-color: #e6ecf0;
   font-family: 'Helvetica';
 }
 ul {
-  -webkit-padding-start: 0px;
+  padding-left: 4px;
+  background-color: #FF1168;
 }
 li {
   list-style-type: none;
 }
 .search-field {
-  font-size: 12px;
+  display: inline;
+  font-size: 14px;
   padding: 4px 0 4px 6px;
   width: 190px;
-  display: block;
   letter-spacing: normal;
   word-spacing: normal;
   text-transform: none;
   text-indent: 0px;
   text-shadow: none;
-  border: 1px solid #ff75a8;
+  border: 1px solid #cdcdcd;
   border-radius: 6px;
 }
-.search-field:focus, input:focus {
-  outline: none;  
+.search-field:focus {
+  outline: none;
+  border: 1px solid #3fb0ac;
+}
+input:focus {
+  outline: none;
 }
 .submit-button {
+  font-size: 14px;
   margin-top: 6px;
+  margin-left: 6px;
+  padding: 4px 10px; 
+  background: #89bdd3; 
+  color: #fff;
+  border: 0 none;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; 
+}
+.submit-button:hover{
+  background: #9ad3de;
+  color: #fff;
 }
 .content {
-  padding: 8px;
+  background-color: #fefefe;
+  padding: 20px;
+  border: solid #d4d4d4;
+  border-width: 1px 1px 0px 1px;
+}
+li:last-child {
+  border-bottom: solid 1px #d4d4d4;  
 }
 .tweet-text {
   white-space: pre-wrap;
   font-weight: 400;
   font-size: 13px;
-  line-height: 15px;
+  line-height: 18px;
+  color: #333
 }
 .user-id {
   font-weight: 500;
@@ -43,7 +78,192 @@ li {
   font-weight: 200;
 }
 .tweet-info {
-  font-size: 14px;
+  font-size: 13px;
+  margin-bottom: 8px;
+  color: #777;
 }
 #container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 600px;
+  height: 100vh;
+  margin: auto;
+}
+.search-form {
+  text-align: center;
+  background-color: #fefefe;
+  width: 100%;
+  padding: 20px 0;
+  margin: 10px;
+  border: 1px solid #ccc;
+}
+.tweet-list {
+  width: 100%;
+}
+.content a:hover {
+  color: #FF1168;
+}
+.content a {
+  text-decoration: none;  
+  color: #dc3d73
+}
+.last-search {
+  margin-top: 12px;
+  color: #777;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+/* Begin Spinner  --- from loading.io */
+@keyframes lds-spin {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1.1, 1.1);
+    transform: scale(1.1, 1.1);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+}
+@-webkit-keyframes lds-spin {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1.1, 1.1);
+    transform: scale(1.1, 1.1);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+}
+.lds-spin {
+  position: relative;
+}
+.lds-spin div > div {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ea3a23;
+  -webkit-animation: lds-spin 1.5s linear infinite;
+  animation: lds-spin 1.5s linear infinite;
+}
+.lds-spin div:nth-child(1) > div {
+  left: 116px;
+  top: 96px;
+  -webkit-animation-delay: -1.3125s;
+  animation-delay: -1.3125s;
+}
+.lds-spin > div:nth-child(1) {
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transform-origin: 120px 100px;
+  transform-origin: 120px 100px;
+}
+.lds-spin div:nth-child(2) > div {
+  left: 110.14213562px;
+  top: 110.14213562px;
+  -webkit-animation-delay: -1.125s;
+  animation-delay: -1.125s;
+}
+.lds-spin > div:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform-origin: 114.14213562px 114.14213562px;
+  transform-origin: 114.14213562px 114.14213562px;
+}
+.lds-spin div:nth-child(3) > div {
+  left: 96px;
+  top: 116px;
+  -webkit-animation-delay: -0.9375s;
+  animation-delay: -0.9375s;
+}
+.lds-spin > div:nth-child(3) {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -webkit-transform-origin: 100px 120px;
+  transform-origin: 100px 120px;
+}
+.lds-spin div:nth-child(4) > div {
+  left: 81.85786438px;
+  top: 110.14213562px;
+  -webkit-animation-delay: -0.75s;
+  animation-delay: -0.75s;
+}
+.lds-spin > div:nth-child(4) {
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+  -webkit-transform-origin: 85.85786438px 114.14213562px;
+  transform-origin: 85.85786438px 114.14213562px;
+}
+.lds-spin div:nth-child(5) > div {
+  left: 76px;
+  top: 96px;
+  -webkit-animation-delay: -0.5625s;
+  animation-delay: -0.5625s;
+}
+.lds-spin > div:nth-child(5) {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+  -webkit-transform-origin: 80px 100px;
+  transform-origin: 80px 100px;
+}
+.lds-spin div:nth-child(6) > div {
+  left: 81.85786438px;
+  top: 81.85786438px;
+  -webkit-animation-delay: -0.375s;
+  animation-delay: -0.375s;
+}
+.lds-spin > div:nth-child(6) {
+  -webkit-transform: rotate(225deg);
+  transform: rotate(225deg);
+  -webkit-transform-origin: 85.85786438px 85.85786438px;
+  transform-origin: 85.85786438px 85.85786438px;
+}
+.lds-spin div:nth-child(7) > div {
+  left: 96px;
+  top: 76px;
+  -webkit-animation-delay: -0.1875s;
+  animation-delay: -0.1875s;
+}
+.lds-spin > div:nth-child(7) {
+  -webkit-transform: rotate(270deg);
+  transform: rotate(270deg);
+  -webkit-transform-origin: 100px 80px;
+  transform-origin: 100px 80px;
+}
+.lds-spin div:nth-child(8) > div {
+  left: 110.14213562px;
+  top: 81.85786438px;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+.lds-spin > div:nth-child(8) {
+  -webkit-transform: rotate(315deg);
+  transform: rotate(315deg);
+  -webkit-transform-origin: 114.14213562px 85.85786438px;
+  transform-origin: 114.14213562px 85.85786438px;
+}
+.lds-spin div:nth-child(9) > div {
+  left: 116px;
+  top: 96px;
+  -webkit-animation-delay: 0.1875s;
+  animation-delay: 0.1875s;
+}
+.lds-spin > div:nth-child(9) {
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+  -webkit-transform-origin: 120px 100px;
+  transform-origin: 120px 100px;
+}
+.lds-spin {
+  width: 156px !important;
+  height: 156px !important;
+  -webkit-transform: translate(-78px, -78px) scale(0.78) translate(78px, 78px);
+  transform: translate(-78px, -78px) scale(0.78) translate(78px, 78px);
 }

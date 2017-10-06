@@ -51,7 +51,7 @@ class Tweet extends React.Component {
       <li>
         <div className="content">
           <div className="tweet-info">
-            <span className="user-id">{ this.props.user_id}</span> <span className="mid-dot">·</span> <span className="post-date">{this.props.date}</span>
+            <span className="user-id">{ '@' + this.props.user_id}</span> <span className="mid-dot">·</span> <span className="post-date">{this.props.date}</span>
           </div>
           <div className="tweet-text" onClick={ this.handleClick }>
             { Parser(linkedText) }

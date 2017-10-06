@@ -11,7 +11,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       searchResults: [],
-      loading: false
+      loading: false,
+      recentSearch: ''
     }
     this.handleSearch = this.handleSearch.bind(this);
   }
@@ -24,37 +25,41 @@ class App extends React.Component {
       }
     })
     .catch( err => {
-      this.setState({loading: false});
+      this.setState({loading: false, recentSearch: ''});
       console.log('Error retrieving search results.')
     })
     .then( result => {
       console.log(result.data)
-      this.setState( { searchResults: result.data, loading: false } );
+      this.setState( { searchResults: result.data, loading: false, recentSearch: query } );
     })
   }
 
   render() {
     let results;
     if(this.state.loading) {
-      results = <div>Loading...</div>;
+      results = <div className="lds-css ng-scope">
+<div className="lds-spin"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>;
     } else {
-      results = (<ul>
-          { this.state.searchResults.map( tweet => {
-            console.log(tweet);
-            return (
-              < Tweet
-                user_id={ tweet.user_id }
-                text={ tweet.text }
-                date={ tweet.formatted_date }
-                handleSearch={ this.handleSearch }
-                key={ tweet._id }
-              />);
-            })
-          }
-        </ul>);
+      results = (
+        <div className="tweet-list">
+          <ul>
+            { this.state.searchResults.map( tweet => {
+              console.log(tweet);
+              return (
+                < Tweet
+                  user_id={ tweet.user_id }
+                  text={ tweet.text }
+                  date={ tweet.formatted_date }
+                  handleSearch={ this.handleSearch }
+                  key={ tweet._id }
+                />);
+              })
+            }
+          </ul>
+        </div>);
     }
     return (<div id="container">
-      < Search handleSearch={ this.handleSearch } />
+      < Search handleSearch={ this.handleSearch } recentSearch={this.state.recentSearch} />
       { results }
     </div>);
   }

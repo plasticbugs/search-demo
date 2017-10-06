@@ -4,7 +4,7 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: ""
+      query: ''
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSearchClick = this.handleSearchClick.bind(this);
@@ -12,8 +12,10 @@ class Search extends React.Component {
   }
 
   handleSearchClick() {
-    this.props.handleSearch(this.state.query);
-    this.setState({query: ''});
+    if(this.state.query.length > 0) {
+      this.props.handleSearch(this.state.query);
+      this.setState({query: ''});
+    }
   }
 
   handleInputChange(event) {
@@ -25,10 +27,16 @@ class Search extends React.Component {
       this.handleSearchClick();
     }
   }
-  
+
   render() {
+    let recentSearch;
+    if(this.props.recentSearch.length > 0) {
+      recentSearch = <div className="last-search">
+        Showing results for: { this.props.recentSearch }
+      </div>;
+    }
     return (
-      <div>
+      <div className="search-form">
         <input 
           className="search-field"
           value={ this.state.query }
@@ -43,6 +51,7 @@ class Search extends React.Component {
           className="submit-button"
           onClick={ this.handleSearchClick } 
         />
+        { recentSearch }
       </div>
     )
   }
