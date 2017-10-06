@@ -6,10 +6,10 @@ var connection = mongoose.connect(process.env.MONGODB_URI, {
 });
 
 connection.then( db => {
-  console.log("successful DB connection")
+  console.log('successful DB connection')
 })
 .catch( error => {
-  console.log("there was an error: ", error);
+  console.log('There was an error: ', error);
   throw(error);
 });
 
