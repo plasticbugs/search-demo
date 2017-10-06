@@ -11,7 +11,8 @@ class Search extends React.Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
-  handleSearchClick() {
+  handleSearchClick(event) {
+    event.preventDefault();
     if(this.state.query.length > 0) {
       this.props.handleSearch(this.state.query);
       this.setState({query: ''});
@@ -19,12 +20,13 @@ class Search extends React.Component {
   }
 
   handleInputChange(event) {
+    event.preventDefault();
     this.setState({query: event.target.value});
   }
 
   handleKeyPress(event) {
     if (event.key === 'Enter') {
-      this.handleSearchClick();
+      this.handleSearchClick(event);
     }
   }
 
@@ -41,20 +43,22 @@ class Search extends React.Component {
     }
     return (
       <div className="search-form">
-        <input 
-          className="search-field"
-          value={ this.state.query }
-          placeholder="Search tweets"
-          onChange={ this.handleInputChange }
-          onKeyPress={ this.handleKeyPress }
-        >
-        </input>
-        <input 
-          type="button" 
-          value="submit"
-          className="submit-button"
-          onClick={ this.handleSearchClick } 
-        />
+        <form>
+          <input 
+            className="search-field"
+            value={ this.state.query }
+            placeholder="Search tweets"
+            onChange={ this.handleInputChange }
+            onKeyPress={ this.handleKeyPress }
+          >
+          </input>
+          <input 
+            type="button" 
+            value="submit"
+            className="submit-button"
+            onClick={ this.handleSearchClick } 
+          />
+        </form>
         { recentSearch }
       </div>
     )
