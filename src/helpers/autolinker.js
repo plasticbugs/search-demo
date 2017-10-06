@@ -11,10 +11,7 @@ let autolinker = new Autolinker({
   mention     : 'twitter',
   hashtag     : 'twitter',
   stripPrefix : false,
-  replaceFn : function( match ) {
-    console.log( "href = ", match.getAnchorHref() );
-    console.log( "text = ", match.getAnchorText() );
-  
+  replaceFn : function( match ) {  
     switch( match.getType() ) {
       case 'url' :
         return true;
