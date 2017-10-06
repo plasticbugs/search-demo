@@ -12,6 +12,7 @@ module.exports.search = (req, res) => {
     } else {
       let formattedResult = result.map( tweet => {
         tweet.formatted_date = moment(tweet.created_at, "YYYYMMDD").fromNow();
+        delete tweet.searchableText;
         return tweet;
       });
       res.send(formattedResult);
