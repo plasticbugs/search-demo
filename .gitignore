@@ -87,5 +87,5 @@ typings/
 .env
 
 public/scripts/bundle.js
-
 data
+db/seeds/tweets.json
