@@ -1,16 +1,18 @@
-var mongodb = require('mongodb');
-var tweetData = require('../seeds/tweets.json');
+const mongodb = require('mongodb');
+const seedSetup = require('../db/seed-setup');
 
 exports.up = function(db, next){
-  var tweets = db.collection('tweets');
-  console.log(tweetData.tweets.length);
-  tweets.insert(tweetData.tweets);
-  tweets.createIndex( { searchableText: 'text' } );
-  next();
+  seedSetup(() => {
+    let tweetData = require('../db/seeds/tweets.json');
+    let tweets = db.collection('tweets');
+    tweets.insert(tweetData.tweets);
+    tweets.createIndex( { searchableText: 'text' } );
+    next();
+  })
 };
 
 exports.down = function(db, next){
-  var tweets = db.collection('tweets');
+  let tweets = db.collection('tweets');
   tweets.deleteMany({})
   next();
 };
