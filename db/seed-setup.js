@@ -8,23 +8,23 @@ let myInterface = readline.createInterface({
 })
 
 module.exports = function(done) {
-  let multiLineTweet = "";
+  let fullTweetLine = "";
   let lineCount = 0;
   let tweetJSON = {
     tweets: []
   };
   
+  const TOTAL_LENGTH = 170;
+
   myInterface.on('line', (line) => {
     // skip first two lines
     if(lineCount > 1) {
-      if (line.length < 169) {
-        multiLineTweet += (line + '\n');
-        if(multiLineTweet.length === 170) {
-          tweetJSON.tweets.push(parseLine(multiLineTweet))
-          multiLineTweet = "";
+      if (line.length < TOTAL_LENGTH) {
+        fullTweetLine += (line + '\n');
+        if(fullTweetLine.length === TOTAL_LENGTH) {
+          tweetJSON.tweets.push(parseLine(fullTweetLine))
+          fullTweetLine = "";
         }
-      } else {
-        tweetJSON.tweets.push(parseLine(line));
       }
     } else {
       lineCount++
@@ -35,7 +35,7 @@ module.exports = function(done) {
     // write out the JSON to a seed file
     let json = JSON.stringify(tweetJSON) + '\n';
     fs.writeFileSync(path.resolve('./db/seeds/tweets.json'), json);
-    console.log("Wrote ", tweetJSON.tweets.length, " entries to file.");
+    console.log('Wrote ', tweetJSON.tweets.length, ' entries to file.');
     done();
   })
 }
