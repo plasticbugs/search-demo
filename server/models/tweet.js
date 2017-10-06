@@ -5,7 +5,8 @@ const moment = require('moment');
 var tweetSchema = new Schema({
   created_at: Date,
   text: String,
-  user_id: String
+  user_id: String,
+  searchableText: String
 });
 
 const Tweet = mongoose.model('Tweet', tweetSchema);
@@ -21,9 +22,13 @@ module.exports.search = (query, callback) => {
       callback(err);
     } else {
       let formattedResult = result.map( tweet => {
-        tweet.formatted_date = moment(tweet.created_at, 'YYYYMMDD').fromNow();
-        delete tweet.searchableText;
-        return tweet;
+        let formatted_date = moment(tweet.created_at, 'YYYYMMDD').fromNow();
+        let formattedTweet = {
+          user_id: tweet.user_id,
+          created_at: formatted_date,
+          text: tweet.text
+        }
+        return formattedTweet;
       });
       callback(null, formattedResult);
     }
