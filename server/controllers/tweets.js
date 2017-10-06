@@ -2,7 +2,7 @@ const Tweet = require('../models/tweet');
 const moment = require('moment');
 
 module.exports.search = (req, res) => {
-  Tweet.find( { $text: { $search: req.query.q } }, {score : { $meta: "textScore" } } )
+  Tweet.find( { $text: { $search: req.query.q, $diacriticSensitive: false } }, {score : { $meta: "textScore" } } )
     .sort( { score: { $meta: "textScore" } } )
     .lean()
     .exec( ( err, result ) => {
